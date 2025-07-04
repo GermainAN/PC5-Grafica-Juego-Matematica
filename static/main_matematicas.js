@@ -539,7 +539,12 @@ function startGame() {
   incorrectAnswers = 0;
   totalCorrectAnswers = 0;
   correctAnswersInLevel = 0;
-  lives = 10; // reiniciar vidas a 10
+  lives = 1; // reiniciar vidas a 10
+
+    
+  // revivir el robot al reiniciar
+  reviveRobot();
+  
   document.getElementById('instructions').style.display = 'none';
   updateScore();
   updateLivesDisplay();
@@ -710,5 +715,21 @@ function playRobotDeath() {
     deathAction.reset();
     deathAction.play();
     console.log('robot muriendo!');
+  }
+}
+
+
+
+
+// funcion para revivir el robot (reiniciar pose)
+function reviveRobot() {
+  if (deathAction) {
+    deathAction.stop();
+    deathAction.reset();
+    console.log('robot revivido!');
+  }
+  if (jumpAction) {
+    jumpAction.stop();
+    jumpAction.reset();
   }
 }
